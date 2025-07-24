@@ -20,7 +20,7 @@ This Next.js application serves as a bridge between an authentication provider l
 
 1.  Clone the repository:
     ```bash
-    git clone fusionauth-twilio-verify
+    git clone https://github.com/alex-fusionauth/fusionauth-twilio-verify.git
     ```
 2.  Navigate to the project directory:
     ```bash
