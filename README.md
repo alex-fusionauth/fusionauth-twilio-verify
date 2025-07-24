@@ -52,7 +52,7 @@ Once the dependencies are installed and the environment variables are configured
 pnpm run dev
 ```
 
-The application will be available at `http://localhost:9002`.
+The application will be available at `http://localhost:3000`.
 
 ## API Endpoints
 
@@ -106,3 +106,25 @@ Checks the provided OTP against Twilio.
   "status": "pending" 
 }
 ```
+
+This works great to test that your Twilio Verify API actually works as a standalone application.
+
+## Using with FusionAuth Generic Messenger
+
+Configure a generic messenger within FusionAuth `/admin/messenger/`.
+
+For the URL you will need to use NGROK so you don't have issues with https, the command you will use is `ngrok http 3000`.
+
+The result will look something like `https://1df9fb565a04.ngrok-free.app/api/check-verification` for your URL.
+
+** YOU SHOULD [SECURE](https://fusionauth.io/docs/customize/email-and-messages/generic-messenger#securing-the-generic-message-receiver) your messenger! (we are not doing that in this example for simplicity) **
+
+Once this has been created you can then enable multifactor in your tenant, enable SMS settings and use the messenger you have created.
+
+## Update Twilio to allow for custom codes to be sent from FusionAuth
+
+Enable Custom Verification Code for your Service:
+
+You need to enable this option in the Twilio Console for your specific Verify Service. Navigate to Verify > Services, select your Service, go to the General tab, and enable "Custom Verification Code."
+
+Alternatively, you might need to contact Twilio Sales to enable this feature for your account, especially for older accounts or certain configurations.
